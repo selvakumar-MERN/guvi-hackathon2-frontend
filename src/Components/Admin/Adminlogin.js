@@ -80,6 +80,10 @@ function Adminlogin(props) {
                                                 admin email- admin@gmail.com
                                                 password- admin123
                                             </h5>
+                                            <h5>
+                                                Notice : Don't reload the admin page after login, you will be logged out automatically
+                                                if you reload, this is for security purpose, please login again to continue.
+                                            </h5>
                                         </div>
 
                                     </form>
