@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Adminlogin(props) {
+    const navigate = useNavigate()
     const [sucess, setsucess] = useState("")
     const [error, seterror] = useState("")
     const [users, setuser] = useState({})
@@ -23,7 +25,7 @@ function Adminlogin(props) {
 
                 }
                 window.localStorage.setItem("admintoken", res.data)
-                window.location.href = "./adminpage"
+                navigate("/admin/adminpage")
 
 
 
