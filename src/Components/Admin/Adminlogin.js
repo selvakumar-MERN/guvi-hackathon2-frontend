@@ -23,7 +23,7 @@ function Adminlogin(props) {
 
                 }
                 window.localStorage.setItem("admintoken", res.data)
-                window.location.href = "./Adminpage"
+                window.location.href = "./adminpage"
 
 
 
