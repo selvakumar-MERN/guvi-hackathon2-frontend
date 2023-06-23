@@ -31,7 +31,8 @@ function Products(props) {
             })
     }, [])
     const handlerChange = (e) => {
-        setrecords(product.filter(item => item.productName.toLowerCase().includes(e.target.value)))
+        const value=e.target.value
+        setrecords(product.filter(item => item.productName.toLowerCase().includes(value.toLowerCase()))
     }
 
 
