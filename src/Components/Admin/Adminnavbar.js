@@ -17,11 +17,6 @@ function Adminnavbar(props) {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav mx-4 ml-auto ">
-
-                            <li className="nav-item mx-3">
-                                <Link to='admin/adminpage'
-                                    className="nav-link text-primary" >Products
-                                </Link>
                             </li>
                             <li className='mx-4 mt-2'>
                                 <a href='/' onClick={logOut}>Logout</a>
