@@ -19,7 +19,7 @@ function Adminnavbar(props) {
                         <ul className="navbar-nav mx-4 ml-auto ">
 
                             <li className="nav-item mx-3">
-                                <Link to='/adminpage'
+                                <Link to='admin/adminpage'
                                     className="nav-link text-primary" >Products
                                 </Link>
                             </li>
