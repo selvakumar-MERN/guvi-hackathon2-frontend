@@ -17,14 +17,9 @@ function Adminnavbar(props) {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav mx-4 ml-auto ">
-                            <li className="nav-item active mx-3">
-                                <Link to='/'
-                                    className="nav-link text-primary" >Home <span className="sr-only">(current)</span>
-                                </Link>
-                            </li>
 
                             <li className="nav-item mx-3">
-                                <Link to='/products'
+                                <Link to='/adminpage'
                                     className="nav-link text-primary" >Products
                                 </Link>
                             </li>
