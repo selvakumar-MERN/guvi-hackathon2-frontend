@@ -76,7 +76,7 @@ function Landingpage(props) {
             <div className='container mt-5 bg-light'>
                 <div className='row'>
                     <div className='col-12'>
-                        <h4>Abot Us</h4>
+                        <h4>About Us</h4>
                         <p>Do you want the best furniture, appliances, or electronics in the market at a budget monthly fee? If the answer is yes, make RentHome your go-to service in Chennai! We are a leading Indian rental company with tens of thousands of satisfied customers all over the country. We provide essential everyday items on rent at a discounted monthly price.
 
                             RentHome allows you to rent furniture, appliances, and electronics for your home. Our inventory includes all the latest products in the market, made by reputable brands. You can choose to rent from us for short term or long term. Our long-term plans offer maximum savings.
