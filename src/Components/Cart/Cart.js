@@ -68,12 +68,12 @@ function Cart(props) {
             handler: function (response) {
                 console.log(response)
 
-                axios.post('http://localhost:3030/product/verify', { response: response })
+                axios.post('https://guvi-hackathon2-6k8d.onrender.com/product/verify', { response: response })
                     .then(res => {
 
                         //signature verification and creating the customer record            
                         if (res.data.message === 'signature valid') {
-                            axios.post('http://localhost:3030/user/createUser', users)
+                            axios.post('https://guvi-hackathon2-6k8d.onrender.com/user/createUser', users)
                                 .then(res => {
                                     //  setcart("")
                                     return res
@@ -98,7 +98,7 @@ function Cart(props) {
         console.log(CartItems)
         const data = { amount: amount }
 
-        axios.post('http://localhost:3030/product/payment', data)
+        axios.post('https://guvi-hackathon2-6k8d.onrender.com/product/payment', data)
             .then(res => {
                 handleRazorpay(res.data.data)
             })
