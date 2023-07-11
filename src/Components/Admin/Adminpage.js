@@ -1,13 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Adminnavbar from './Adminnavbar';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 
 
 function Adminpage(props) {
-
+    const notify = () => toast("Product Deleted");
     const [product, setproduct] = useState([])
     const [records, setrecords] = useState([])
 
@@ -53,6 +55,7 @@ function Adminpage(props) {
             .then((res) => {
                 if (res.data.deletedCount === 1) {
                     setproduct(product.filter((product) => product._id !== id))
+                    notify()
                 }
             })
             .catch((error) => {
@@ -126,7 +129,7 @@ function Adminpage(props) {
                                     </Link>
                                     <button
                                         className="btn btn-danger mt-auto m-1" onClick={() => { deleteProduct(items._id) }}>
-                                        <i className="fa fa-trash m-1" ></i></button>
+                                        <i className="fa fa-trash m-1" ></i></button>  <ToastContainer />
 
                                 </div>
 
