@@ -1,21 +1,23 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
 import axios from 'axios';
 import Usernav from '../Landingpage/Usernav';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from '../Footer/Footer';
+import Mycontext from '../../Context';
 
 
 
 
-function Products(props) {
+function Products() {
+    const {CartItems,setCartItems} = useContext(Mycontext);
+   
     const [loading,setloading]=useState(false)
     const notify = () => toast("Added to Cart");
     const [product, setproduct] = useState([])
     const [records, setrecords] = useState([])
-
-
+    
 
 
     useEffect(() => {
@@ -23,7 +25,7 @@ function Products(props) {
         axios.get('https://guvi-hackathon2-6k8d.onrender.com/product/products')
             .then(res => {
 
-                 setloading(true)
+                setloading(true)
                 setproduct(res.data)
                 setrecords(res.data)
             })
@@ -31,12 +33,31 @@ function Products(props) {
                 return (error)
             })
     }, [])
+
+    const submit= (id)=>{
+        
+       axios.get(`https://guvi-hackathon2-6k8d.onrender.com/product/products/${id}`)
+        .then(res => {
+           const value={...res.data}
+           notify()
+            CartItems.push(value)
+            setCartItems([...CartItems])
+        
+          
+               
+        })
+        .catch(error => {
+            return (error)
+        })
+        
+        
+    }
+    
     const handlerChange = (e) => {
-        const value=e.target.value
-        setrecords(product.filter(item => item.productName.toLowerCase().includes(value.toLowerCase())))
+        setrecords(product.filter(item => item.productName.toLowerCase().includes(e.target.value)))
     }
 
-
+  
 
 
     return (
@@ -62,7 +83,7 @@ function Products(props) {
                 </div>
 
                 <h2 className='mt-4'>Products</h2>
-                { loading ?   <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 mt-4 ">
+                { loading ? <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 mt-4 ">
 
 
                     {records.map((items) =>
@@ -83,8 +104,13 @@ function Products(props) {
                                 {/*Product actions*/}
                                 <div className="card-footer p-1 pt-0 border-top-0 bg-transparent " >
 
-                                    <button className="btn btn-warning mt-auto m-1" onClick={() => { props.addCart(items); notify() }}
-                                    ><i className="fa fa-shopping-cart" ></i>Add Cart</button>
+                                    <button className="btn btn-warning mt-auto m-1"
+                                    disabled={CartItems.some((obj) => obj[0]._id === items._id)} 
+                                    onClick={()=>{ submit(items._id)} }
+                                    ><i className="fa fa-shopping-cart" ></i> {CartItems.some((obj) => obj[0]._id === items._id)
+                                        ? "Added to cart"
+                                        : "Add to cart"}
+                                        </button>
 
 
                                 </div>
@@ -94,7 +120,7 @@ function Products(props) {
                         </div>
 
                     )}
-                </div> : <section >
+                </div>:<section >
                     <div className='container mt-3 text-center'> 
                  <div className='spinner-border text-primary ' role='status'>
                 <span className='sr-only'>Loading...</span>
