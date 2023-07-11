@@ -10,18 +10,17 @@ import Editproduct from './Components/Admin/Editproduct';
 import Cart from './Components/Cart/Cart';
 import Contactus from './Components/Contactus/Contactus';
 import Usersdetails from './Components/Admin/Usersdetails';
+import UserProvider from './Useprovider';
 
 function App() {
   const[user,setuser]=useState("");
-  const[cart,setcart]=useState("");
   const userdata=(item)=>{
         setuser(item)
   }
 
-  const addCart=(item)=>{
-        setcart(item)
-  }
+ 
   return (
+    <UserProvider>
     <BrowserRouter>
     <Routes>
     <Route exact 
@@ -42,7 +41,7 @@ function App() {
       </Route>
       <Route exact 
       path='/products' 
-      element={<Products addCart={addCart}/>} >
+      element={<Products />} >
       </Route>
       <Route exact 
       path='admin/editproduct' 
@@ -50,7 +49,7 @@ function App() {
       </Route>
       <Route exact 
       path='/cart' 
-      element={<Cart cart ={cart}/>} >
+      element={<Cart/>} >
       </Route>
       <Route exact 
       path='/contactus' 
@@ -62,6 +61,7 @@ function App() {
       </Route>
       </Routes>
       </BrowserRouter>
+      </UserProvider>
     
   );
 }
