@@ -13,7 +13,7 @@ function Calender({ id }) {
 
     const submit = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:3030/product/calender/${id}`, date)
+        axios.post(`https://guvi-hackathon2-6k8d.onrender.com/product/calender/${id}`, date)
             .then(res => {
                 const index = CartItems.findIndex((value) => value[0]._id === id)
                 CartItems[index][0].hours = res.data
